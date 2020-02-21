@@ -1,4 +1,133 @@
-@charset "UTF=8";
-/* CSS Document hi */
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-repeat: repeat;
+	background-color: #333;
+	color: #FFF;
+	font-size: 16px;
+}
+
+.hidden { display: none }
+
+#container {
+	width: 100%;
+	padding-top: 40px;
+}
+
+#game-board {
+	margin: auto;
+	width: 1500px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#illustration {
+	height: 500px;
+	background: white;
+	text-align: center;
+	width: 58%;
+	color: black;
+}
+
+.instruments {
+	width: 39%;
+	height: 500px;
+	border: medium solid #333;
+	background-color: #fff;
+	color: inherit;
+	overflow: hidden;
+	text-align: center;
+}
+
+.instruments-container {
+	padding-left: 80px;
+	padding-right: 80px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.music-board {
+	width: 100%;
+	height: 200px;
+	background-color: #fff;
+	overflow: hidden;
+	padding: 40px;
+	margin: auto;
+	margin-top: 40px;
+	text-align: center;
+}
+
+.icon {
+	display: inline-block;
+	padding: 20px;
+	width: 90px;
+	cursor: pointer;
+}
+
+.drop-zone img {
+	width: 100px;
+	padding: 50px; 
+	cursor: default;
+}
+
+#resetButton {
+	padding: 5px;
+	margin-top: 10px;
+}
+
+/* set up drop zones */
+
+.drop-zone { 
+	display: inline-block;
+	width: 24%;
+	height: 100%;
+	background: #888;
+	margin: auto;
+	text-align: center;
+	vertical-align: center;
+}
+
+/* end board styles */
 
 
+header {
+	position: relative;
+	top: 20px;
+	width: 600px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+header h1 {
+	font-size: 3.25em;
+  	letter-spacing: 3px;
+	margin: 10px 0
+}
+
+header p, footer p { 
+	font-size: 1.7em; 
+	letter-spacing: 2px; 
+	margin: 10px 0 
+}
+
+footer {
+	position: relative;
+	width: 600px;
+	margin: 65px auto 0;
+	text-align: center;
+}
+
+#buttonHolder { margin: 0px auto; text-align: center; }
+
+#buttonHolder img {
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 20px;
+	border: thin solid #333;
+	cursor: pointer;
+}
+
+#buttonHolder img:hover { opacity: .5; }

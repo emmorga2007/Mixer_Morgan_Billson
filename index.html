@@ -1,13 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>The Roaring 20's</title>
-	<link href="css/reset.css" rel="stylesheet" type="text/css" media="screen">
-	<link href="css/main.css" rel="stylesheet" type="text/css" media="screen">
+<meta charset="utf-8">
+	<title>The Roarding 20's - Music Mixer Game</title>
+	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1>The Roaring 20s</h1>
+	<header id="headLine">
+		<h1 class="hidden">The Roarding 20's - Music Mixer Game</h1>
+	</header>
+	<div id="container">
+	<div id="game-board">
+		<h2 class="hidden">The Game Board</h2>
+		<div id="illustration">
+			<h2>Illustration goes here.</h2>
+		</div>
+		<div class="instruments">
+			<div class="instruments-container">
+			<h3 class="hidden">The Drag Zone</h3>
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<img src="" class="icon">
+			<button id="resetButton" onClick="window.location.reload();">Reset</button>
+		</div>
+		</div>
+		<div class="music-board">
+			<h3 class="hidden">The Drop Zone</h3>
+			<div class="drop-zone tl"></div>
+			<div class="drop-zone tr"></div>
+			<div class="drop-zone bl"></div>
+			<div class="drop-zone br"></div>
+		</div>
+	</div>
+	</div>
+
+	<footer>
+	</footer>
+
 	<script src="js/main.js"></script>
 </body>
 </html>
