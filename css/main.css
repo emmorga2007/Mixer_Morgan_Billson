@@ -7,7 +7,6 @@ body {
 	color: #FFF;
 	font-size: 16px;
 	height: 100%;
-	overflow:;
 }
 
 .hidden { display: none }
@@ -20,18 +19,16 @@ body {
 	margin: auto;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 }
 
 #illustration {
-	height: 1100px;
-	width: 49%;
-	margin: 0;
-	margin-left: -40px;
-	margin-top: -150px;
-	margin-bottom: -150px;
+	height: 1150px;
+	width: 53%;
+	margin-left: -120px;
+	margin-top: -80px;
 	background-image: url("../images/gramaphone.svg"); 
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -40,35 +37,39 @@ body {
 .instruments {
 	background-image: url("../images/grid.svg");
 	background-repeat: no-repeat;
-	background-size: cover;
-	margin-top: -100px;
-	margin-left: -80px;
-	margin-bottom: -100px;
-	width: 55%;
-	text-align: center;
-	height: 1200px;
+	width: 30%;
+	height: 800px;
 }
 
 .instruments-container {
 	display: inline-flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
-	align-content: center;
 	justify-content: space-between;
-	margin-left: 120px;
-	width: 560px;
-	height: 800px;
+	align-items: center;
+	width: 516px;
+}
+
+.instruments-row {
+	height: 24%;
+	width: 100%;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: nowrap;
+}
+
+.instruments img {
+	padding: 0;
 }
 
 .music-board {
-	width: 100%;
-	height: 200px;
-	background-color: #fff;
-	overflow: hidden;
-	padding: 40px;
+	display: inline-flex;
 	margin: auto;
-	margin-top: 40px;
-	text-align: center;
+	margin-top: 810px;
+	margin-left: 330px;
+	width: 600px;
+	height: 140px;
 }
 
 .icon {
@@ -92,13 +93,15 @@ body {
 /* set up drop zones */
 
 .drop-zone { 
-	display: inline-block;
-	width: 24%;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 25%;
 	height: 100%;
-	background: #888;
-	margin: auto;
-	text-align: center;
-	vertical-align: center;
+}
+
+.drop-zone img {
+	width: 100%;
 }
 
 /* end board styles */
@@ -146,9 +149,9 @@ footer {
 #title {
 	width: 800px;
 	height: 250px;
-	margin-left: -60px;
+	margin-left: 20px;
 	position: absolute;
-	top: -20px;
+	top: 0px;
 	left: 40%;
 }
 

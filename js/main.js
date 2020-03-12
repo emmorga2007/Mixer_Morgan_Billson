@@ -6,13 +6,13 @@
 		instruments = document.querySelectorAll('.instruments img'), 
 		dropZones = document.querySelectorAll('.drop-zone');
 
-		const pieces = ["instrument1", "instrument2", "instrument3", "instrument4", "instrument5", "instrument6", "instrument7", "instrument8", "instrument9"];
+		const pieces = ["instrument1", "instrument2", "instrument3", "instrument4", "instrument5", "instrument6", "instrument7", "instrument8", "instrument9", "instrument10", "instrument11", "instrument12"];
 
 	// DRAG N DROP FUNCTIONS //
 
 	function setInstruments(event) {
 		pieces.forEach((piece, index) => { 
-		instruments[index].src = `images/${piece}.png`;
+		instruments[index].src = `images/${piece}.svg`;
 		instruments[index].id =`${piece}`; 
 	});
 	}
