@@ -31,14 +31,31 @@
 	function allowDrop(event) {
 		console.log('you dropped something onto me!');
 		let currentPiece = event.dataTransfer.getData("text/plain", this.id);
-		console.log(this.id);
 		event.target.appendChild(document.querySelector(`#${currentPiece}`));
 	}
 
 	// END DRAG N DROP FUNCTIONS
 
 	// PLAYING AUDIO FUNCTIONS 
+
+	function playSound(event) {
+	let currentPiece = event.dataTransfer.getData("text/plain", this.id);
+   	let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
+
+    // the ! is a check for inequality (it means the condition is false)
+    // also called a bang operator
+    // if there is no matching audio element, then kill the function and do nothing
+  	  if (!audioElement) { return }
+
+    // if we have a match, then play the sound that goes with the keyboard key
+  	  audioElement.currentTime = 0;  // no brackets means it's a property
+  	  audioElement.play(); // round brackets means this is a method - a built-in function
 	
+  	  // add something to indicate that it's playing 
+  	 //  key.classList.add('playing');
+  }
+
+
 
 	window.addEventListener('load', setInstruments);
 
@@ -49,5 +66,6 @@
 
 	dropZones.forEach(zone => zone.addEventListener('dragover', allowDragOver));
 	dropZones.forEach(zone => zone.addEventListener('drop', allowDrop));
+	dropZones.forEach(zone => zone.addEventListener('drop', playSound));
 
 })();
