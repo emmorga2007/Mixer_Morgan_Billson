@@ -75,7 +75,6 @@
 
 	window.addEventListener('load', setInstruments);
 
-	// set up our Drag event
 	instruments.forEach(piece => piece.addEventListener('dragstart', dragStart));
 	
 	dropZones.forEach(zone => zone.addEventListener('dragover', allowDragOver));
