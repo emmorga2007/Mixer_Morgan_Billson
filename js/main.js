@@ -2,7 +2,8 @@
 	// set up the puzzle pieces and boards
 	// navButtons -> images at the bottom of the page
 	const resetButton = document.querySelector('#resetButton'), 
-		musicBoard = document.querySelector('.music-board'), 
+		musicBoard = document.querySelector('.music-board'),
+		instrumentZones =  
 		instruments = document.querySelectorAll('.instruments img'), 
 		dropZones = document.querySelectorAll('.drop-zone');
 
@@ -18,18 +19,14 @@
 	}
 
 	function dragStart(event) {
-		console.log('started a drag');
 		event.dataTransfer.setData("text/plain", this.id);
-		console.log(this.id);
 	}
 
 	function allowDragOver(event) {
 		event.preventDefault();
-		console.log('you dragged something onto me!');
 	}
 
 	function allowDrop(event) {
-		console.log('you dropped something onto me!');
 		let currentPiece = event.dataTransfer.getData("text/plain", this.id);
 		event.target.appendChild(document.querySelector(`#${currentPiece}`));
 	}
@@ -39,6 +36,7 @@
 	// PLAYING AUDIO FUNCTIONS 
 
 	function playSound(event) {
+		debugger;
 	let currentPiece = event.dataTransfer.getData("text/plain", this.id);
    	let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
 
@@ -52,7 +50,7 @@
   	  audioElement.play(); // round brackets means this is a method - a built-in function
 	
   	  // add something to indicate that it's playing 
-  	 //  key.classList.add('playing');
+  	  key.classList.add('playing');
   }
 
 

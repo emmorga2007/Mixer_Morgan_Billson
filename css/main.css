@@ -12,7 +12,8 @@ body {
 .hidden { display: none }
 
 #container {
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 }
 
 #game-board {
@@ -35,32 +36,43 @@ body {
 }
 
 .instruments {
+	margin-top: 100px;
+	padding-top: 15px;
+	padding-bottom: 25px;
 	background-image: url("../images/grid.svg");
 	background-repeat: no-repeat;
-	width: 30%;
-	height: 800px;
-}
-
-.instruments-container {
 	display: inline-flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: center;
-	width: 516px;
+	height: 740px;
+	width: 600px;
+	align-items: stretch;
 }
 
 .instruments-row {
-	height: 24%;
+	height: 22%;
 	width: 100%;
 	display: inline-flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	flex-wrap: nowrap;
+	align-items: center;
 }
 
-.instruments img {
-	padding: 0;
+
+.iconZone {
+	padding-top: 10px;
+	width: 29%;
+	height: 90%;
+	text-align: center;
+
+}
+
+.icon {
+	padding: 10px;
+	width: 75%;
+	cursor: pointer;
+
 }
 
 .music-board {
@@ -72,18 +84,6 @@ body {
 	height: 140px;
 }
 
-.icon {
-	display: inline-block;
-	padding: 20px;
-	width: 90px;
-	cursor: pointer;
-}
-
-.drop-zone img {
-	width: 100px;
-	padding: 50px; 
-	cursor: default;
-}
 
 #resetButton {
 	padding: 5px;
