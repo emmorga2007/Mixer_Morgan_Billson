@@ -7,6 +7,7 @@ body {
 	color: #FFF;
 	font-size: 16px;
 	height: 100%;
+	overflow: hidden;
 }
 
 .hidden { display: none }
@@ -14,6 +15,7 @@ body {
 #container {
 	width: 100vw;
 	height: 100vh;
+
 }
 
 #game-board {
@@ -134,17 +136,6 @@ footer {
 	text-align: center;
 }
 
-#buttonHolder { margin: 0px auto; text-align: center; }
-
-#buttonHolder img {
-	margin-left: 5px;
-	margin-right: 5px;
-	border-radius: 20px;
-	border: thin solid #333;
-	cursor: pointer;
-}
-
-#buttonHolder img:hover { opacity: .5; }
 
 #title {
 	width: 800px;

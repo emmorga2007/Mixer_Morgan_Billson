@@ -3,7 +3,7 @@
 	// navButtons -> images at the bottom of the page
 	const resetButton = document.querySelector('#resetButton'), 
 		musicBoard = document.querySelector('.music-board'),
-		instrumentZones =  
+		instrumentZones = document.querySelectorAll('.iconZone'), 
 		instruments = document.querySelectorAll('.instruments img'), 
 		dropZones = document.querySelectorAll('.drop-zone');
 
@@ -19,7 +19,15 @@
 	}
 
 	function dragStart(event) {
+		debugger;
+		let zone = event.target.parentNode;
 		event.dataTransfer.setData("text/plain", this.id);
+		if (zone.classList.contains("hasPiece")) {
+		    zone.classList.remove("hasPiece");
+		}
+		if (zone.classList.contains("playing")) {
+			zone.classList.remove("playing");
+		}
 	}
 
 	function allowDragOver(event) {
@@ -27,8 +35,14 @@
 	}
 
 	function allowDrop(event) {
+		debugger;
+		let zone = event.target;
+		if (zone.classList.contains("hasPiece")) { return false }
 		let currentPiece = event.dataTransfer.getData("text/plain", this.id);
-		event.target.appendChild(document.querySelector(`#${currentPiece}`));
+		let currentInstrument = document.querySelector(`#${currentPiece}`);
+		zone.appendChild(document.querySelector(`#${currentPiece}`));
+		zone.classList.add('hasPiece');
+	    currentInstrument.classList.add('hasPiece');
 	}
 
 	// END DRAG N DROP FUNCTIONS
@@ -36,21 +50,25 @@
 	// PLAYING AUDIO FUNCTIONS 
 
 	function playSound(event) {
-		debugger;
+	debugger;
+	let zone = event.target;
 	let currentPiece = event.dataTransfer.getData("text/plain", this.id);
    	let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
+   	let currentInstrument = document.querySelector(`#${currentPiece}`);
+  
+  	if (!audioElement) { return }
+  	if (zone.classList.contains("playing")) { return }
+  	 audioElement.currentTime = 0;
+  	 audioElement.play(); 
+  	 zone.classList.add("playing");
+  	 currentInstrument.classList.add("playing");
+  	 return audioElement;
+  } 
 
-    // the ! is a check for inequality (it means the condition is false)
-    // also called a bang operator
-    // if there is no matching audio element, then kill the function and do nothing
-  	  if (!audioElement) { return }
-
-    // if we have a match, then play the sound that goes with the keyboard key
-  	  audioElement.currentTime = 0;  // no brackets means it's a property
-  	  audioElement.play(); // round brackets means this is a method - a built-in function
-	
-  	  // add something to indicate that it's playing 
-  	  key.classList.add('playing');
+  function stopSound(event) {
+  	let currentPiece = event.dataTransfer.getData("text/plain", this.id);
+   	let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
+  	audioElement.pause();
   }
 
 
@@ -59,11 +77,11 @@
 
 	// set up our Drag event
 	instruments.forEach(piece => piece.addEventListener('dragstart', dragStart));
-
-	// set up the dragover content for our drop zones
-
+	
 	dropZones.forEach(zone => zone.addEventListener('dragover', allowDragOver));
 	dropZones.forEach(zone => zone.addEventListener('drop', allowDrop));
 	dropZones.forEach(zone => zone.addEventListener('drop', playSound));
-
+	instrumentZones.forEach(zone => zone.addEventListener('dragover', allowDragOver));
+	instrumentZones.forEach(zone => zone.addEventListener('drop', allowDrop));
+	instrumentZones.forEach(zone => zone.addEventListener('drop', stopSound));
 })();
