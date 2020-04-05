@@ -6,7 +6,6 @@
 		instrumentZones = document.querySelectorAll('.iconZone'), 
 		instruments = document.querySelectorAll('.instruments img'), 
 		dropZones = document.querySelectorAll('.drop-zone');
-
 		const pieces = ["instrument1", "instrument2", "instrument3", "instrument4", "instrument5", "instrument6", "instrument7", "instrument8", "instrument9", "instrument10", "instrument11", "instrument12"];
 
 	// DRAG N DROP FUNCTIONS //
@@ -19,7 +18,6 @@
 	}
 
 	function dragStart(event) {
-		debugger;
 		let zone = event.target.parentNode;
 		event.dataTransfer.setData("text/plain", this.id);
 		if (zone.classList.contains("hasPiece")) {
@@ -35,7 +33,6 @@
 	}
 
 	function allowDrop(event) {
-		debugger;
 		let zone = event.target;
 		if (zone.classList.contains("hasPiece")) { return false }
 		let currentPiece = event.dataTransfer.getData("text/plain", this.id);
@@ -45,35 +42,57 @@
 	    currentInstrument.classList.add('hasPiece');
 	}
 
-	// END DRAG N DROP FUNCTIONS
 
-	// PLAYING AUDIO FUNCTIONS 
 
 	function playSound(event) {
-	debugger;
-	let zone = event.target;
-	let currentPiece = event.dataTransfer.getData("text/plain", this.id);
-   	let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
-   	let currentInstrument = document.querySelector(`#${currentPiece}`);
+		let zone = event.target;
+		let currentPiece = event.dataTransfer.getData("text/plain", this.id);
+   		let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
+   		let currentInstrument = document.querySelector(`#${currentPiece}`);
   
-  	if (!audioElement) { return }
-  	if (zone.classList.contains("playing")) { return }
-  	 audioElement.currentTime = 0;
-  	 audioElement.play(); 
-  	 zone.classList.add("playing");
-  	 currentInstrument.classList.add("playing");
-  	 return audioElement;
-  } 
+  		if (!audioElement) { return }
+  		if (zone.classList.contains("playing")) { return }
+  	 	
+  	 	audioElement.currentTime = 0;
+  	 	audioElement.play(); 
+  	 	zone.classList.add("playing");
+  	 	currentInstrument.classList.add("playing");
+  	 	audioElement.loop = true;
+  	 	
+  	 	return audioElement;
+  	} 
 
-  function stopSound(event) {
-  	let currentPiece = event.dataTransfer.getData("text/plain", this.id);
-   	let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
-  	audioElement.pause();
-  }
+  	function stopSound(event) {
+  		let currentPiece = event.dataTransfer.getData("text/plain", this.id);
+   		let audioElement = document.querySelector(`audio[data-instrument="${currentPiece}"]`);
+  		audioElement.pause();
+  	}
 
 
+  function init() {
+  	debugger;
+  	for (let i = 0; i < dropZones.length; i++) {
+  		const parent = dropZones[i];
+  		while (parent.firstChild) {
+  			parent.firstChild.remove();
+  			parent.classList.remove("hasPiece");
+  			parent.classList.remove("playing");
+  		}
+  	}
+  	const audio = document.querySelectorAll('audio');
+  	for (let i = 0; i < audio.length; i++) {
+  		audio[i].pause();
+  	}
+  	for (let i=0; i  < instruments.length; i++) {
+  		const dragZone = instrumentZones[i];
+  		const instrument = instruments[i];
+  		dragZone.appendChild(instrument);
+  	}
+}
 
 	window.addEventListener('load', setInstruments);
+
+	resetButton.addEventListener('click', init);
 
 	instruments.forEach(piece => piece.addEventListener('dragstart', dragStart));
 	
