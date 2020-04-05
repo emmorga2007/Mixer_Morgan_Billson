@@ -1,7 +1,8 @@
 (() => {
 	// set up the puzzle pieces and boards
 	// navButtons -> images at the bottom of the page
-	const resetButton = document.querySelector('#resetButton'), 
+	const resetButton = document.querySelector('.resetButton'), 
+		restartButton = document.querySelector('.restartButton'),
 		musicBoard = document.querySelector('.music-board'),
 		instrumentZones = document.querySelectorAll('.iconZone'), 
 		instruments = document.querySelectorAll('.instruments img'), 
@@ -58,7 +59,7 @@
   	 	zone.classList.add("playing");
   	 	currentInstrument.classList.add("playing");
   	 	audioElement.loop = true;
-  	 	
+
   	 	return audioElement;
   	} 
 
@@ -69,8 +70,7 @@
   	}
 
 
-  function init() {
-  	debugger;
+  function reset() {
   	for (let i = 0; i < dropZones.length; i++) {
   		const parent = dropZones[i];
   		while (parent.firstChild) {
@@ -87,12 +87,23 @@
   		const dragZone = instrumentZones[i];
   		const instrument = instruments[i];
   		dragZone.appendChild(instrument);
+  		instrument.classList.remove("hasPiece");
+  		instrument.classList.remove("playing");
   	}
 }
+	function restart() {
+		for (let i=0; i < dropZones.length; i++) {
+			const parent = dropZones[i];
+			id = parent.firstChild.id.split("_");
+   			let audioElement = document.querySelector(`audio[data-instrument="${id}"]`);
+   			audioElement.currentTime = 0;
+			}
+	}
 
 	window.addEventListener('load', setInstruments);
 
-	resetButton.addEventListener('click', init);
+	resetButton.addEventListener('click', reset);
+	restartButton.addEventListener('click', restart);
 
 	instruments.forEach(piece => piece.addEventListener('dragstart', dragStart));
 	

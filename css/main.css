@@ -92,6 +92,7 @@ body {
 	margin-right: auto;
 }
 #resetButton button {
+	margin-left: 50px;
 	background: gold;
 	color: black;
 	border: none;
